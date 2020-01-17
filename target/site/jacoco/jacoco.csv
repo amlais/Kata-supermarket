@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+kata-supermarket-pricing,kata.market.model,Supermarket,0,148,0,2,0,22,0,17,0,16
+kata-supermarket-pricing,kata.market.model,Item,76,78,24,4,24,19,15,7,2,6
+kata-supermarket-pricing,kata.market.model,Customer,13,110,4,6,1,13,3,9,0,7
+kata-supermarket-pricing,kata.market.pricing,PackagePricing,0,46,0,0,0,8,0,2,0,2
+kata-supermarket-pricing,kata.market.pricing,DefaultPricing,0,9,0,0,0,2,0,2,0,2
+kata-supermarket-pricing,kata.market.pricing,Pricing,0,3,0,0,0,1,0,1,0,1

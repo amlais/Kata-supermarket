@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Customer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">kata-supermarket-pricing</a> &gt; <a href="index.source.html" class="el_package">kata.market.model</a> &gt; <span class="el_source">Customer.java</span></div><h1>Customer.java</h1><pre class="source lang-java linenums">package kata.market.model;
+import java.util.LinkedHashMap;
+
+import static io.vavr.API.*;
+
+<span class="fc" id="L6">class Customer {</span>
+    private Supermarket supermarket;
+<span class="fc" id="L8">    private LinkedHashMap&lt;Item, Float&gt; cart = new LinkedHashMap();</span>
+    
+    public LinkedHashMap&lt;Item, Float&gt; getCart(){
+<span class="fc" id="L11">    	return cart;</span>
+    }
+    
+    void addToCart(Item item, float numberToBuy) {
+<span class="fc bfc" id="L15" title="All 2 branches covered.">        if (cart.containsKey(item)) {</span>
+<span class="pc bpc" id="L16" title="3 of 4 branches missed.">            if(item.isByWeight() &amp;&amp; (numberToBuy - (int) numberToBuy) != 0)</span>
+            {
+<span class="nc" id="L18">                throw new RuntimeException(&quot;Error case: you cannot buy half an item !&quot;);</span>
+            }
+            else
+            {
+<span class="fc" id="L22">                cart.put(item, numberToBuy + (Float) cart.get(item));</span>
+            }
+        }
+        else
+        {
+<span class="fc" id="L27">            cart.put(item, numberToBuy);</span>
+        }
+<span class="fc" id="L29">    }</span>
+
+    void removeFromCart(Item item, float number) {
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        if (cart.containsKey(item))</span>
+        {
+<span class="fc" id="L34">            Match((Float) cart.get(item) - number).of(</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">                    Case($(n -&gt; n &gt; 0), () -&gt; cart.replace(item, (Float) cart.get(item) - number)),</span>
+<span class="fc" id="L36">                    Case($(), () -&gt; cart.remove(item)));</span>
+        }
+<span class="fc" id="L38">    }</span>
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
